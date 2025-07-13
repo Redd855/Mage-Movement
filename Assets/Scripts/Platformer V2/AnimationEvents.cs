@@ -10,4 +10,8 @@ public class AnimationEvents : MonoBehaviour
     {
         animator.SetBool("PerfectSlideCancel", false);
     }
+    public void InitialBonkDone()
+    {
+        animator.SetBool("Bonked", false);
+    }
 }

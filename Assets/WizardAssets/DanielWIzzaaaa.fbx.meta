@@ -42,6 +42,18 @@ ModelImporter:
   - first:
       74: 1079665108409675491
     second: Armature|Jump
+  - first:
+      74: -1610121569764356963
+    second: Armature|Bonking
+  - first:
+      74: -6919768004603077600
+    second: Armature|WallSlidingLoop
+  - first:
+      74: -1736859998956241590
+    second: Armature|WallSlidingStart
+  - first:
+      74: -1770766973134985545
+    second: Light|FallStart
   externalObjects: {}
   materials:
     materialImportMode: 2

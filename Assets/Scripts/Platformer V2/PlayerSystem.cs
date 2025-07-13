@@ -311,6 +311,7 @@ public class PlayerSystem : MonoBehaviour
         ActivateStandingCollider();
         if (Time.time - bellySlideStart <= stats.bellySlideTiming)
         {
+            
             animator.SetBool("PerfectSlideCancel", true);
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             AddFrameForce(player.up * stats.bellySlideCancelJumpForce);
@@ -319,6 +320,7 @@ public class PlayerSystem : MonoBehaviour
         }
         else
         {
+            animator.SetBool("PerfectSlideCancel", false);
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             AddFrameForce(player.up * stats.bellySlideCancelJumpForce, true);
         }
@@ -342,7 +344,7 @@ public class PlayerSystem : MonoBehaviour
         }
         else if (GetState() is State.Diving)
         {
-            wallAhead = Physics.Raycast(transform.position + new Vector3(0,0.5f,0), player.forward, out stats.wallHit, stats.wallCheckDistance * 4, stats.Wall)
+            wallAhead = Physics.Raycast(transform.position + new Vector3(0,0.5f,0), player.forward, out stats.wallHit, stats.wallCheckDistance * 4.5f, stats.Wall)
                 && (Mathf.Abs(stats.wallHit.normal.x) > 0.8 || Mathf.Abs(stats.wallHit.normal.z) > 0.8);
             Debug.DrawRay(transform.position, stats.wallHit.normal);
             
@@ -419,20 +421,22 @@ public class PlayerSystem : MonoBehaviour
         if (GetState() is State.Bonked)
         {
             hasBonked = true;
+            
             Bonk();
         }
     }
 
     public void Bonk()
     {
-        
+
         if (isCurrentlyDiving && wallAhead)
         {
+            
             ActivateStandingCollider();
             isCurrentlyDiving = false;
             rb.velocity = Vector3.zero;
             AddFrameForce(-player.forward.normalized * stats.bonkDistance + player.up.normalized * stats.bonkVerticalDistance);
-            
+
         }
         isCurrentlyDiving = false;
 

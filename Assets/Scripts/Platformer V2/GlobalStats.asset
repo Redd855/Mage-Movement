@@ -21,7 +21,7 @@ MonoBehaviour:
   EarlyJumpEndMult: 15
   airFriction: 20
   divingHorizontalForce: 35
-  divingVerticalForce: 10
+  divingVerticalForce: 13
   divingMaxSpeed: 1000
   divingCancelJumpForce: 7
   bonkDistance: 35

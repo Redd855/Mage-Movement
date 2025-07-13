@@ -53,7 +53,9 @@ public class AnimationManager : MonoBehaviour
             animator.SetBool("Diving", false);
             animator.SetBool("Falling", false);
             animator.SetBool("Jumping", false);
-
+            animator.SetBool("Bonked", false);
+            animator.SetBool("PerfectSlideCancel", false);
+            animator.SetBool("BellySliding", false);
 
 
         }
@@ -72,13 +74,17 @@ public class AnimationManager : MonoBehaviour
             {
                 animator.SetBool("Falling", false);
             }
-
+            animator.SetBool("BellySliding", false);
         }
         else if (playerSystem.GetState() is PlayerSystem.State.Diving)
         {
+            
             playerRender.material.SetColor("_Color", Color.yellow);
             animator.SetBool("Grounded", false);
             animator.SetBool("Diving", true);
+            animator.SetBool("Jumping", false);
+            animator.SetBool("PerfectSlideCancel", false);
+            animator.SetBool("BellySliding", false);
 
             float xRotation = 75 - playerSystem.rb.velocity.y * 2;
             xRotation = Mathf.Clamp(xRotation, 70f, 120f);
@@ -88,6 +94,8 @@ public class AnimationManager : MonoBehaviour
         }
         else if (playerSystem.GetState() is PlayerSystem.State.BellySlide)
         {
+            animator.SetBool("BellySliding", true);
+            animator.SetBool("PerfectSlideCancel", false);
             playerRender.material.SetColor("_Color", Color.blue);
 
             Vector3 right = playerRot.right;
@@ -116,9 +124,12 @@ public class AnimationManager : MonoBehaviour
         }
         else if (playerSystem.GetState() is PlayerSystem.State.Bonked)
         {
+
             playerRender.material.SetColor("_Color", Color.gray);
-            targetRot = new Vector3(270, targetRot.y, targetRot.z);
+            targetRot = new Vector3(-80, targetRot.y, targetRot.z);
             animator.SetBool("Diving", false);
+            animator.SetBool("Bonked", true);
+            Debug.Log("Bonked");
         }
     }
 }
