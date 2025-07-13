@@ -56,7 +56,7 @@ public class AnimationManager : MonoBehaviour
             animator.SetBool("Bonked", false);
             animator.SetBool("PerfectSlideCancel", false);
             animator.SetBool("BellySliding", false);
-
+            animator.SetBool("WallSliding", false);
 
         }
         else if (playerSystem.GetState() is PlayerSystem.State.Aerial)
@@ -117,10 +117,14 @@ public class AnimationManager : MonoBehaviour
         else if (playerSystem.GetState() is PlayerSystem.State.WallSliding)
         {
             playerRender.material.SetColor("_Color", Color.green);
+            targetRot = new Vector3(targetRot.x, 180, targetRot.z);
+            animator.SetBool("WallSliding", true);
         }
         else if (playerSystem.GetState() is PlayerSystem.State.WallJump)
         {
+            targetRot = new Vector3(targetRot.x, 0, targetRot.z);
             playerRender.material.SetColor("_Color", Color.magenta);
+            animator.SetBool("WallSliding", false);
         }
         else if (playerSystem.GetState() is PlayerSystem.State.Bonked)
         {
