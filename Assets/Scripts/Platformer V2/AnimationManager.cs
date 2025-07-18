@@ -57,13 +57,14 @@ public class AnimationManager : MonoBehaviour
             animator.SetBool("PerfectSlideCancel", false);
             animator.SetBool("BellySliding", false);
             animator.SetBool("WallSliding", false);
-
+            animator.SetBool("WallJumping", false);
         }
         else if (playerSystem.GetState() is PlayerSystem.State.Aerial)
         {
-            playerRender.material.SetColor("_Color", Color.red);
+            //playerRender.material.SetColor("_Color", Color.red);
             bool grounded = playerSystem.GetState() is PlayerSystem.State.Grounded;
             animator.SetBool("Grounded", grounded);
+            animator.SetBool("WallJumping", false);
             targetRot = Vector3.zero;
             animator.SetBool("Diving", false);
             if (playerSystem.rb.velocity.y < 0) {
@@ -116,15 +117,17 @@ public class AnimationManager : MonoBehaviour
         }
         else if (playerSystem.GetState() is PlayerSystem.State.WallSliding)
         {
-            playerRender.material.SetColor("_Color", Color.green);
+            //playerRender.material.SetColor("_Color", Color.green);
             targetRot = new Vector3(targetRot.x, 180, targetRot.z);
             animator.SetBool("WallSliding", true);
+            animator.SetBool("WallJumping", false);
         }
         else if (playerSystem.GetState() is PlayerSystem.State.WallJump)
         {
             targetRot = new Vector3(targetRot.x, 0, targetRot.z);
-            playerRender.material.SetColor("_Color", Color.magenta);
+            //playerRender.material.SetColor("_Color", Color.magenta);
             animator.SetBool("WallSliding", false);
+            animator.SetBool("WallJumping", true);
         }
         else if (playerSystem.GetState() is PlayerSystem.State.Bonked)
         {

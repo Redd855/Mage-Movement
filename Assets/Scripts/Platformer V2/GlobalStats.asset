@@ -38,7 +38,7 @@ MonoBehaviour:
   wallJumpFriction: 3
   Grounded:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 8
   Wall:
     serializedVersion: 2
     m_Bits: 64

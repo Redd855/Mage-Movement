@@ -54,6 +54,18 @@ ModelImporter:
   - first:
       74: -1770766973134985545
     second: Light|FallStart
+  - first:
+      74: 4663580470219242067
+    second: Armature|WallJumping
+  - first:
+      74: 7732201453415183665
+    second: Armature|WallJumpTwo
+  - first:
+      74: -6726430454628517420
+    second: Armature|BonkTwo
+  - first:
+      74: 7161051118369983236
+    second: Plane.001|DiveStart
   externalObjects: {}
   materials:
     materialImportMode: 2

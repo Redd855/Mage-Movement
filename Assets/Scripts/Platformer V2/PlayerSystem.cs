@@ -447,11 +447,11 @@ public class PlayerSystem : MonoBehaviour
     #region States
     public State GetState()
     {
-        if ((isCurrentlyDiving && wallAhead) || hasBonked)
+        if ((isCurrentlyDiving && wallAhead && !isCurrentlyWallSliding) || hasBonked)
         {
             return State.Bonked;
         }
-        if (isCurrentlyDiving && !isCurrentlyBellySliding) {
+        if (isCurrentlyDiving && !isCurrentlyBellySliding && !isCurrentlyWallSliding) {
             return State.Diving;
         }
         if (isCurrentlyBellySliding)
@@ -539,7 +539,7 @@ public class PlayerSystem : MonoBehaviour
         {
             hasBellySlideCancelled = true;
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !hasJumped)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !hasJumped && !isCurrentlyWallSliding)
         {
             hasDived = true;
         }
