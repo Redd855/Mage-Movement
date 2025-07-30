@@ -9,6 +9,8 @@ public class AnimationManager : MonoBehaviour
 {
     public Renderer playerRender;
     public PlayerSystem playerSystem;
+    public ParticleSystem landingParticleSystem;
+    public ParticleSystem walkingParticleSystem;
     [SerializeField] Animator animator;
     public Transform playerRot;
     public Vector3 targetRot;
@@ -44,8 +46,22 @@ public class AnimationManager : MonoBehaviour
 
     void SetAnimatorParams()
     {
+        if (!(playerSystem.GetState() is PlayerSystem.State.BellySlide))
+        {
+            if (walkingParticleSystem.isPlaying)
+            {
+                walkingParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                walkingParticleSystem.Clear(true);
+            }
+        }
         if (playerSystem.GetState() is PlayerSystem.State.Grounded)
         {
+            if (animator.GetBool("Falling"))
+            {
+                landingParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                landingParticleSystem.Clear(true);
+                landingParticleSystem.Play();
+            }
             playerRender.material.SetColor("_Color", Color.red);
             bool grounded = playerSystem.GetState() is PlayerSystem.State.Grounded;
             animator.SetBool("Grounded", grounded);
@@ -79,8 +95,8 @@ public class AnimationManager : MonoBehaviour
         }
         else if (playerSystem.GetState() is PlayerSystem.State.Diving)
         {
-            
-            playerRender.material.SetColor("_Color", Color.yellow);
+
+                playerRender.material.SetColor("_Color", Color.yellow);
             animator.SetBool("Grounded", false);
             animator.SetBool("Diving", true);
             animator.SetBool("Jumping", false);
@@ -95,6 +111,21 @@ public class AnimationManager : MonoBehaviour
         }
         else if (playerSystem.GetState() is PlayerSystem.State.BellySlide)
         {
+            if (playerSystem.rb.velocity.magnitude > 1.5f)
+            {
+                if (!walkingParticleSystem.isPlaying)
+                {
+                    walkingParticleSystem.Play();
+                }
+            }
+            else
+            {
+                if (walkingParticleSystem.isEmitting)
+                {
+                    walkingParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+                    //walkingParticleSystem.Clear(true);
+                }
+            }
             animator.SetBool("BellySliding", true);
             animator.SetBool("PerfectSlideCancel", false);
             playerRender.material.SetColor("_Color", Color.blue);
