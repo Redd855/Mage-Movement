@@ -6,28 +6,11 @@ Run, Dive and jump precisely as a wizard to progress through the levels and reac
 *This is just a tech demo to show off the movement of the wizard and only one level
 
 
-
-
-
-
-
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
-## Demo
-
-Insert gif or link to demo
-
-
 ## Features
 
-- 
-- 
-- 
-- 
-
+- Smooth animation
+- Fluid movement
+- One demo level to test out all the movement
 
 ## Installation
 
