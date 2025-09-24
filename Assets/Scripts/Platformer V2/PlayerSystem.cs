@@ -266,8 +266,8 @@ public class PlayerSystem : MonoBehaviour
     {
         if (!(GetState() is State.BellySlide)) {
             ActivateStandingCollider();
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            AddFrameForce(player.up * stats.divingCancelJumpForce, true);
+            rb.velocity = new Vector3(rb.velocity.x / 3, 0, rb.velocity.z / 3);
+            AddFrameForce(player.up * stats.divingCancelJumpForce, false);
         }
     }
 
