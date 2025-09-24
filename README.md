@@ -14,7 +14,7 @@ Run, Dive and jump precisely as a wizard to progress through the levels and reac
 
 ## Installation
 
-The installation will be linked right on this github page for easy access!
+The demo is not available yet
     
 ## Controls
 
