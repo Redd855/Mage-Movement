@@ -3,7 +3,7 @@ Mage Movement is a 3D platformer inspired by the likes of Super Mario 64 and Pse
 
 Run, Dive and jump precisely as a wizard to progress through the levels and reach the end
 
-*This is just a tech demo to show off the movement of the wizard
+*This is just a tech demo to show off the movement of the wizard and only one level
 
 
 
@@ -31,13 +31,36 @@ Insert gif or link to demo
 
 ## Installation
 
-Install my-project with npm
-
-```bash
-  npm install my-project
-  cd my-project
-```
+The installation will be linked right on this github page for easy access!
     
 ## Controls
+
+Use standard WASD controls to move
+
+W - Move forward
+
+A - Move backward
+
+S - Move left
+
+D - Move right
+
+Space - Jumo
+
+Left Shift - Dive
+
+You can cancel the dive and sliding at any time using the jump
+
+(Try timing your jump to right after you land after a dive to improve your movement)
 ## Keep in touch
+
+If you encounter any bugs or wish to contribute to this project feel free to message me on Discord or on Linkedin!
+
+Discord: redd85
+
+Linkedin: https://www.linkedin.com/in/daniel-h855/
+
+
 ## Development Status
+
+At this moment it's not being actively developed past the demo state however in the future if I ever gain the inspiration to or if someone wants to contribute to this project I would love to keep working on it.
